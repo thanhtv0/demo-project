@@ -1,0 +1,12 @@
+.App {
+  text-align: center;
+  overflow: hidden;
+}
+
+:root {
+  --mainColor: #00a3ad;
+  --mainColorDark: #026786;
+  --mainColorLight: #59d5df;
+  --secondaryColor: #ffcd05;
+  --secondaryColorDark: #c79d00;
+}

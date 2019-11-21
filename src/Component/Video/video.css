@@ -1,0 +1,73 @@
+@media only screen and (min-width: 320px) {
+    .video-modal {
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.2);
+        z-index: 5;
+        display: none;
+    }
+    
+    .video-modal-content {
+        width: 100%;
+        height: 100%;
+        background-color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .video-modal .video {
+        width: 100%;
+        height: 240px;
+    }
+
+    .active {
+        display: block;
+    }
+
+    .video-modal .btn-close {
+        font-weight: bold;
+        color: black;
+        font-size: 14px;
+        right: 10px;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .video-modal .video {
+        width: 80%;
+        height: 80%;
+    }
+
+    .video-modal-content {
+        flex-direction: column;
+        background-color: transparent;
+
+    }
+
+    .video-modal .btn-close {
+        position: relative;
+        margin-bottom: 20px;
+        color: white;
+        width: 80%;
+        text-align: right;
+    }
+}
+
+@media only screen and (min-width: 1044px) {
+    .video-modal .video {
+        width: 70%;
+    }
+
+    .video-modal .btn-close {
+        width: 70%;
+    }
+
+    .btn-close:hover {
+        cursor: pointer;
+    }
+
+}

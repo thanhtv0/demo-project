@@ -1,0 +1,586 @@
+@media only screen and (min-width: 320px) {
+    .main {
+        width: 100vw;
+        overflow-x: hidden;
+        z-index: 1;
+        position: relative;
+    }
+    
+    .first-background {
+        background-image: url("../../Images/herobg.jpg");
+        width: 100%;
+        height: 40vh;
+        margin-top: 60px;
+        background-size: cover;
+        background-position: top;
+        background-repeat: no-repeat;
+    }
+    
+    .sharing-line {
+        background-color: var(--mainColorDark);
+        color: white;
+        font-size: 30px;
+        font-weight: 500;
+        height: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+    .sharing-line .text {
+        font-size: 20px;
+        margin-top: 15px;
+    }
+    
+    .sharing-line a {
+        width: 100%;
+        padding: 10px;
+        background: var(--mainColor);
+        font-size: 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        margin-top: 15px;
+        color: white;
+    }
+    
+    .sharing-line a:hover {
+        background: var(--mainColorLight);
+        cursor: pointer;
+    }
+    
+    /* ######################################### */
+    .gird-container {
+        display: grid;
+        grid-template-columns: auto;
+        padding: 15px;
+        text-align: start;
+    }
+
+    .gird-item {
+        min-width: 290px;
+    }
+
+    .gird-item img {
+        width: 100%;
+    }
+    
+    .gird-item img:hover {
+        cursor: pointer;
+    }
+
+    .gird-item h1{
+        color: var(--mainColor);
+        font-size: 30px;
+    }
+
+    .how-it-work-btn {
+        margin-top: 20px;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .button {
+        font-weight: 700;
+        padding: 12px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        text-align: center;
+    }
+    
+    .button:hover {
+        cursor: pointer;
+    }
+    
+    .btn-second:hover {
+        background-color: var(--mainColor);
+    }
+    
+    .btn-first:hover {
+        background-color: var(--secondaryColorDark);
+    }
+    
+    .btn-first {
+        background-color: var(--secondaryColor);
+        color: var(--mainColorDark);
+        margin-bottom: 20px;
+    }
+    
+    .left-content .btn-second {
+        color: white;
+        background-color: var(--mainColorDark);
+    }
+
+    .how-it-work .left-content p {
+        margin: 25px 0px;
+    }
+
+    .how-it-work .item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    /* ################# */
+    .infinity {
+        background-color: var(--mainColorDark);
+        position: relative;
+    }
+    
+    .infinity img {
+        width: 90%;
+        position: relative;
+        margin-top: 20px;
+        margin-bottom: 50px;
+    }
+    
+    .infinity-background {
+        background-color: var(--mainColor);
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+    
+    .infinity-content {
+        display: grid;
+        grid-template-columns: 50% 50%;
+        color: white;
+        background-color: var(--mainColor);
+    }
+
+    .infinity-content .right {
+        background-color: var(--mainColorDark);
+    }
+
+    .infinity-content .content h1 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .infinity-content .content {
+        padding: 60px 20px 20px;
+        text-align: right;
+        position: relative;
+    }
+
+    .infinity-content .right {
+        text-align: left;
+    }
+
+    .content-button {
+        height: 100px;
+    }
+
+    .content a {
+        text-decoration: none;
+        color: white;
+        margin-top: 15px;
+        display: block;
+        text-align: center !important;
+        padding: 15px 20px;
+        background-color: var(--secondaryColor);
+        border-radius: 5px;
+        font-weight: 700;
+        font-size: 12px;
+        color: var(--mainColorDark);
+    }
+
+    .content .btn-second {
+        background-color: var(--mainColor);
+        color: white;
+    }
+
+    .has-number::before {
+        content: " ";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        right: 0;
+        border: 5px solid var(--secondaryColor);
+        border-radius: 50%;
+        right:0px;
+        transform: translateX(50%);
+        text-align: center;
+        color: var(--mainColorDark);
+        background-color: var(--secondaryColor);
+        font-size: 16px;
+        font-weight: 700;
+        z-index: 1;
+    }
+    
+    .start::before {
+        background-color: transparent;
+    }
+    
+    .one::before {
+        content: "1";
+    }
+    
+    .two::before {
+        content: "2";
+    }
+    
+    .three::before {
+        content: "3";
+    }
+    
+    .four::before {
+        content: "4";
+    }
+    
+    .five::before {
+        content: "5";
+    }
+    
+    .has-line::after {
+        content: "";
+        border-right: 5px solid var(--secondaryColor);
+        position: absolute;
+        right: 0;
+        top: 25px;
+        height: 100%;
+        z-index: 1;
+        margin-top: 60px;
+        transform: translate(50%);
+    }
+    
+    .start::after {
+        border-right-style: dashed;
+    }
+    
+    .right.start::before {
+        content: "";
+        height: 15px;
+        border-right: 5px solid var(--secondaryColor);
+        position: absolute;
+        left: 0;
+        top: 55px;
+        transform: translateX(-50%);
+    }
+
+
+    /* ############ */
+    .insurance {
+        background-image: url("../../Images/insuranceBg.png");
+        height: auto;
+        background-repeat: no-repeat;
+        background-size: 120%;
+        color: var(--mainColorDark);
+        font-weight: 600;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px 40px;
+        background-position: center;
+        background-color: rgb(249, 194, 3);
+    }
+    
+    .insurance .text {
+        width: auto;
+        padding: 0px 25px;
+    }
+    
+    .logo-insurance {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    
+    .logo-insurance div {
+        font-size: 28px;
+        font-weight: 800;
+    }
+    
+    .logo-insurance img {
+        width: 180px;
+        margin-top: 10px;
+    }
+    
+    .insurance .button {
+        padding-left: 56px;
+        padding-right: 56px;
+        margin-top: 50px;
+        background-color: var(--mainColorDark);
+        color:white;
+    }
+    
+    .bottom {
+        background-image: url("../../Images/bottomBg.png");
+        height: 350px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        font-size: 20px;
+        font-weight: 500;
+        text-align: left;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 15px;
+    }
+    
+    .bottom .text {
+        width: 320px;
+        margin-top: 50px;
+    }
+    
+    .bottom .title {
+        font-size: 30px;
+        font-weight: bold;
+        color: var(--secondaryColor);
+    }
+    
+    .bottom .button {
+        margin-top: 50px;
+        width: 70px;
+    }
+    
+    .bottom .btn-first:hover {
+        background-color: var(--mainColor);
+        box-shadow: var(--mainColorDark);
+        border: 1px solid  rgba(2,103,134, 0.2);
+        box-shadow: 0.5px 0.5px;
+    }
+    
+    .bottom-text {
+        padding: 20px;
+        font-size: 14px;
+    }
+}
+
+/* ######################################### */
+/* tablet */
+@media only screen and (min-width: 768px) {
+    .sharing-line .text {
+        font-size: 28px;
+        margin: 20px;
+    }
+
+    .sharing-line a {
+        width: 80%;
+        padding: 15px;
+        font-size: 26px;
+        margin: 20px;
+        color: white;
+    }
+    
+    .gird-item h1{
+        font-size: 44px;
+    }
+
+    .how-it-work-btn {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .how-it-work-btn a {
+        width: 100%;
+    }
+
+    .how-it-work .btn-first {
+        margin-right: 20px;
+    }
+
+    .how-it-work .btn-second {
+        margin-left: 20px;
+    }
+
+    .button {
+        padding: 20px 45px;
+        font-size: 24px;
+    }
+
+    .logo-insurance {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .logo-insurance img {
+        margin-left: 10px;
+    }
+
+    .insurance .text {
+        width: 450px;
+        margin-top: 25px;
+        font-size: 20px;
+    }
+
+    .bottom {
+        padding: 25px;
+    }
+
+    .bottom .text {
+        width: auto;
+        font-size: 24px;
+    }
+
+    .bottom .title {
+        font-size: 35px;
+    }
+
+    .content-button {
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    .content a {
+        font-size: 22px;
+        width: 239px;
+        margin-bottom: 50px;
+    }
+
+    .infinity-content .content {
+        padding-left: 50px;
+    }
+
+    .infinity-content .right {
+        padding-left: 20px;
+        padding-right: 50px;
+    }
+
+    .how-it-work-btn .btn-second {
+        height: 28px;
+    }
+
+}
+
+
+/* ######################################### */
+
+@media only screen and (min-width: 1024px) {
+    .sharing-line a {
+        width: 240px;
+    }
+
+    .button {
+        font-size: 24px;
+    }
+
+    .gird-item img {
+        width: 500px;
+    }
+
+    .infinity img {
+        width: 60%;
+    }
+
+    .infinity-content .content {
+        padding-left: 20%;
+        padding-right: 40px;
+    }
+
+    .infinity-content .right {
+        padding-left: 40px;
+        padding-right: 20%;
+    }
+
+    .infinity-content .content h1 {
+        font-size: 24px;
+    }
+
+    .insurance {
+        background-size: 100%;
+    }
+
+    .has-number::before {
+        width: 40px;
+        height: 40px;
+        font-size: 30px;
+        border: 8px solid var(--secondaryColor);
+    }
+
+    .has-line::after {
+        margin-top: 80px;
+        border-right: 8px solid var(--secondaryColor);
+    }
+
+    .right.start::before {
+        height: 20px;
+        border-right: 8px solid var(--secondaryColor);
+    }
+
+    .start::after {
+        border-right-style: dashed;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .sharing-line {
+        flex-direction: row;
+    }
+
+    .sharing-line .text {
+        font-size: 34px;
+        margin: 20px;
+    }
+
+    .button {
+        padding: 20px 5px;
+        font-size: 24px;
+    }
+
+    .how-it-work-btn {
+        padding-right: 150px;
+    }
+
+    .first-background {
+        height: 100vh;
+    }
+
+    .how-it-work-btn {
+        justify-content: start;
+    }
+
+    .gird-container {
+        grid-template-columns: auto auto;
+    }
+
+    .gird-item img {
+        margin: 0;
+    }
+
+    .item {
+        /* grid-row-start / grid-column-start / grid-row-end / grid-column-end. */
+        grid-area: 1 / 2 / 3 / 2;
+    }
+
+    .bottom {
+        padding-left: 20%;
+    }
+
+    .how-it-work .left-content {
+        padding:0px 10% 10px;
+    }
+
+    .how-it-work img {
+        padding-right: 30px;
+    }
+
+    .infinity-content .content h1 {
+        font-size: 35px;
+    }
+
+    .infinity-content .content p {
+        font-size: 24px;
+    }
+
+    .infinity-content .content {
+        padding-left: 40%;
+        padding-right: 40px;
+    }
+
+    .infinity-content .right {
+        padding-left: 40px;
+        padding-right: 40%;
+    }
+
+    .has-line::after {
+        transform: translateX(50%);
+    }
+}

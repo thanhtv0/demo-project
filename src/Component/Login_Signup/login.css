@@ -1,0 +1,208 @@
+@media only screen and (min-width: 320px) {
+    .login {
+        width: 100%;
+        height: 100%;
+    }
+
+    .login-background {
+        width: 100%;
+        margin-top: 100px;
+        padding: 15px;
+        box-sizing: border-box;
+    }
+
+    .login-tab {
+        display: flex;
+    }
+
+    .login-tab button {
+        font-size: 32px;
+        text-align: left;
+        font-weight: bold;
+        color: var(--mainColorDark);
+        background-color: white;
+        border: none;
+        outline: none;
+        padding-bottom: 5px;
+    }
+
+    .tab-login {
+        margin-left: 15px;
+    }
+
+    .selected {
+        border-bottom: 3px solid var(--mainColorDark) !important;
+    }
+
+    .form {
+        margin-top: 30px;
+        text-align: left;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .form label {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    input {
+        width: 100%;
+        display: block;
+        border: none;
+        padding: 10px 0px;
+        font-size: 18px;
+        border-bottom: 2px solid var(--mainColorDark);
+        box-sizing: border-box;
+        outline: none;
+    }
+
+    .required {
+        color: red;
+        padding: 2px 0px;
+        visibility: visible;
+    }
+
+    .errordate {
+        /* margin-bottom: 18px; */
+        height:42px
+    }
+
+    .none-required {
+        padding: 2px 0px;
+        visibility: hidden;
+    }
+
+    input[class="required"] {
+        border-bottom: 2px solid red;
+        color: black;
+        padding: 10px 0px;
+    }
+
+    .forgot-pass {
+        margin: 25px 0px;
+        color: gray;
+        font-size: 14px;
+        text-align: center;
+    }
+
+    .forgot-pass a {
+        text-decoration: none;
+        color: black;
+    }
+
+    .disable {
+        background-color: rgb(205, 199, 199) !important;
+    }
+
+    input[type="submit"] {
+        border: none;
+        color: white;
+        padding: 15px 0px;
+        background-color: var(--mainColor);
+        font-weight: 700;
+    }
+
+    input[type="submit"]:hover {
+        cursor: pointer;
+    }
+
+    .input-name {
+        display: flex;
+    }
+
+    .input-name .first-name{
+        margin-right: 15px;
+    }
+
+    .select-custom select {
+        width: 100%;
+        outline: none;
+        font-size: 18px;
+        padding: 10px 0px;
+        border: none;
+        background-color: white;
+        border-radius: 0px;
+        border-bottom: 2px solid var(--mainColorDark);
+        -webkit-appearance: none;
+    }
+
+    .select-custom {
+        position: relative;
+    }
+
+    .select-custom i {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+    }
+
+    .date {
+        display: flex;
+    }
+
+    .date .select-custom {
+        flex: 1;
+        margin-right: 10px;
+    }
+
+    select[class="required"] {
+        border-bottom: 2px solid red;
+        color: black;
+        padding: 10px 0px;
+    }
+
+    .by-signing {
+        text-align: center;
+        font-size: 14px;
+        margin-top: 20px;
+        color: gray;
+        margin-bottom: 25px;
+    }
+
+    .by-signing a {
+        text-decoration: none;
+        color: var(--mainColor);
+    }
+
+    .date select {
+        border-bottom: 2px solid var(--secondaryColor);
+    }
+
+    .login-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;    
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .login {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-container {
+        background-image: url("../../Images/herobg.jpg");
+        width: 90%;
+        height: 80%;
+        margin-top: 100px;
+        margin-bottom: 50px;
+        border-radius: 5px;
+        background-size: cover;
+    }
+
+    .login-background {
+        width: 480px;
+        height: 100%;
+        margin-bottom: 70px;
+        padding: 40px 60px;
+        background-color: white;
+        border-bottom: 8px solid var(--mainColor);
+    }
+}
+ 

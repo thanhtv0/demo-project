@@ -1,0 +1,73 @@
+@media only screen and (min-width: 320px) {
+    .button-mess i{
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .button-mess i {
+        display: block;
+    }
+
+    .button-mess-mobile {
+        display: none;
+    }
+}
+
+.button-mess i {
+    color: white;
+    padding: 18px;
+    font-size: 24px;
+    background-color: var(--mainColor);
+    border-radius: 50%;
+    position: fixed;
+    z-index: 1;
+    bottom: 25px;
+    right: 25px;
+    box-shadow: 1px 1px 5px black;
+}
+
+.button-mess i:hover {
+    cursor: pointer;
+}
+
+.button-mess-mobile {
+    width: 50px;
+    position: fixed;
+    z-index: 5;
+    top: 50%;
+    right: 5px;
+}
+
+.btn-chat {
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--mainColorDark);
+    margin-bottom: 18px;
+    position: relative;
+    box-shadow: 1px 1px 5px black;
+}
+
+.btn-chat::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 15px solid var(--mainColorDark);
+    position: absolute;
+    top:80%;
+    right: 0px;
+    transform: rotate(-45deg);
+}
+
+.btn-chat i{
+    font-size: 24px;
+}
