@@ -5,17 +5,7 @@
         z-index: 1;
         position: relative;
     }
-    
-    .first-background {
-        background-image: url("../../Images/herobg.jpg");
-        width: 100%;
-        height: 40vh;
-        margin-top: 60px;
-        background-size: cover;
-        background-position: top;
-        background-repeat: no-repeat;
-    }
-    
+
     .sharing-line {
         background-color: var(--mainColorDark);
         color: white;

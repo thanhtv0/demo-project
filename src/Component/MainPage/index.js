@@ -3,11 +3,14 @@ import "./MainPage.css"
 import videoLogo from "../../Images/videoLogo.png"
 import infinity from "../../Images/infinity.png"
 import insurance from "../../Images/insurance.png"
+import RentForm from "./RentForm"
 
 const MainPage = (props) => {
     return (
         <div className="main">
-            <div className="first-background" />
+            <div className="first-background">
+                <RentForm />
+            </div>
             <div className="sharing-line">
                 <div className="text"><b>Go Drive lah!</b> Enjoy the benefits of car sharing!</div>
                 <a href="#">join</a>
@@ -19,7 +22,7 @@ const MainPage = (props) => {
                     <p>Drive lah makes it simple and secure to rent and share cars from real people. <b>Watch how it works now.</b></p>
                 </div>
                 <div className="gird-item item">
-                    <img onClick={props.handleClickOpenPopup} src={videoLogo} />
+                    <img onClick={props.handleClickOpenPopup} src={videoLogo} alt="video" />
                 </div>
                 <div className="left-content gird-item">
                     <div className="how-it-work-btn">
