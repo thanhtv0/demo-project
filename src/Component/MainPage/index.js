@@ -13,7 +13,7 @@ const MainPage = (props) => {
             </div>
             <div className="sharing-line">
                 <div className="text"><b>Go Drive lah!</b> Enjoy the benefits of car sharing!</div>
-                <a href="#">join</a>
+                <a href="/">join</a>
             </div>
 
             <div className="how-it-work gird-container">
@@ -26,15 +26,15 @@ const MainPage = (props) => {
                 </div>
                 <div className="left-content gird-item">
                     <div className="how-it-work-btn">
-                        <a href="#" className="button btn-first">how to rent a car</a>
-                        <a href="#" className="button btn-second">how to share your car</a>
+                        <a href="/" className="button btn-first">how to rent a car</a>
+                        <a href="/" className="button btn-second">how to share your car</a>
                     </div>
                 </div>
             </div>
 
             <div className="infinity">
                 <div className="infinity-background"></div>
-                <img src={infinity} />
+                <img src={infinity} alt="infinity" />
             </div>
 
             <div className="infinity-content">
@@ -99,27 +99,27 @@ const MainPage = (props) => {
                 </div>
 
                 <div className="content content-button">
-                    <a href="#" className="">find a car</a>
+                    <a href="/" className="">find a car</a>
                 </div>
 
                 <div className="content content-button right">
-                    <a href="#" className="btn-second">list your car</a>
+                    <a href="/" className="btn-second">list your car</a>
                 </div>
             </div>
 
             <div className="insurance">
                 <div className="logo-insurance">
                     <div>Fully insured<span style={{ verticalAlign: "super" }}>+</span></div>
-                    <img src={insurance} />
+                    <img src={insurance} alt="insurance"/>
                 </div>
                 <div className="text">Relax, the car is fully insured<span style={{ verticalAlign: "super" }}>+</span> throughout the whole trip by our trusted insurance partner.</div>
-                <a href="#" className="button btn-second">find out more</a>
+                <a href="/" className="button btn-second">find out more</a>
             </div>
 
             <div className="bottom">
                 <div className="title">Ready to go Drive lah?</div>
                 <div className="text">Join the growing community of people saving on the costs for driving a car.</div>
-                <a href="#" className="button btn-first">join</a>
+                <a href="/" className="button btn-first">join</a>
             </div>
 
             <div className="bottom-text">All cars aged less than 10 years are comprehensively insured. Cars aged 10 years or higher are insured via third party coverage only.</div>

@@ -96,6 +96,74 @@
     .need-help {
         display: none;
     }
+
+    /* #############Calendar############# */
+
+    .calendar-container {
+        width: 100%;
+        position: relative;
+        box-sizing: border-box;
+    }
+
+    .calendar {
+        width: 100%;
+        background-color: var(--mainColor);
+        margin-top: 5px;
+        color: white;
+        /* position: absolute; */
+        font-size: 18px;
+        font-weight: bold;
+        box-sizing: border-box;
+    }
+
+    .select-month {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+    }
+
+    .select-month div {
+        margin: 0px 35px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .select-month i {
+        padding: 5px;
+    }
+
+    .layout-choise-day {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto auto auto;
+        padding: 0px 10px;
+    }
+
+    .day-item {
+        font-size: 14px;
+        padding: 8px 0px;
+        text-align: center;
+    }
+
+   .day-item span {
+        line-height: 100%;
+    }
+
+    .selected-day span {
+        border-bottom: 2px solid white;
+        margin-top: 5px;
+    }
+
+    .choised-day {
+        background-color: yellowgreen;
+        border-radius: 50%;
+    }
+
+    .disable-day {
+        color: gray;
+    }
+
+    /* ################################# */
 }
 
 @media only screen and (min-width: 768px) {

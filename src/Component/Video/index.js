@@ -6,7 +6,7 @@ const Video = (props) => {
         <div className={props.showPopupVideo ? "video-modal active" : "video-modal"}>
             <div className="video-modal-content">
                 <div className="btn-close" onClick={props.handleClickClosePopup}>CLOSE X</div>
-                {props.showPopupVideo && <iframe className="video"
+                {props.showPopupVideo && <iframe title="video" className="video"
                     src={`https://www.youtube.com/embed/OaOzjZiVaws`}
                 >
                 </iframe>}
