@@ -187,7 +187,7 @@
     }
 
     .choised-day {
-        background-color: yellowgreen;
+        background-color: lightgreen;
         border-radius: 50%;
     }
 
@@ -233,6 +233,24 @@
     .year-item-selected {
         border: 1px solid var(--secondaryColor);
         border-radius: 5px;
+    }
+
+    .block {
+        background-color: lightgray;
+    }
+
+    .item-center-selected {
+        background-color: lightgreen;
+    }
+
+    .item-first-selected {
+        background-color: lightgreen;
+        border-radius: 50% 0 0 50%;
+    }
+
+    .item-end-selected {
+        background-color: lightgreen;
+        border-radius: 0 50% 50% 0;
     }
 
     /* ################################# */

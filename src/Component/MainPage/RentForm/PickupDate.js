@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import moment from "moment"
+import FormChoiseMonth from "./FormChoiseMonth"
+import FormChoiseYear from "./FormChoiseYear"
 
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -190,73 +192,6 @@ const DayItem = (props) => {
         default:
             return <div className="day-item"><span></span></div>
     }
-}
-
-const FormChoiseMonth = (props) => {
-
-    const handleClickMonth = (month) => {
-        if (props.onChangeMonth) {
-            props.onChangeMonth(month);
-        }
-    }
-
-    const increaseYear = () => {
-        props.onChangeYear(props.year + 1);
-    }
-
-    const decreaseYear = () => {
-        props.onChangeYear(props.year - 1);
-    }
-
-    return (
-        <>
-            <div className={`calendar ${props.show && "show"}`} tabIndex={0}>
-                <div className="select-month">
-                    <i onClick={decreaseYear} className="fas fa-chevron-left"></i>
-                    <div onClick={() => props.upperLayout()}>{props.year}</div>
-                    <i onClick={increaseYear} className="fas fa-chevron-right"></i>
-                </div>
-                <div className="layout-choise-month">
-                    {months.map((ele, index) => {
-                        return <div onClick={() => handleClickMonth(index)} className={`month-item ${(props.month === index) && "month-item-selected"}`} key={index}>{ele.substr(0, 3)}</div>
-                    })}
-                </div>
-            </div>
-        </>
-    )
-}
-
-const FormChoiseYear = (props) => {
-
-    const [years, setYears] = useState([]);
-
-    useEffect(() => {
-        if (props.show) {
-            let thisYear = moment().get("year");
-            let arr = new Array(19);
-            for (let i = 0; i < 19; i++) {
-                arr[i] = thisYear - 9 + i;
-            }
-            setYears(arr);
-        }
-    }, [props.show])
-
-    return (
-        <>
-            <div className={`calendar ${props.show && "show"}`} tabIndex={0}>
-                <div className="select-month">
-                    <i onClick={null} className="fas fa-chevron-left"></i>
-                    <div>Please select a year</div>
-                    <i onClick={null} className="fas fa-chevron-right"></i>
-                </div>
-                <div className="layout-choise-year">
-                    {years.map((value, index) => {
-                        return <div onClick={() => props.onChange(value) } key={index} className={`year-item ${(value === props.year) && "year-item-selected"}`}>{value}</div>
-                    })}
-                </div>
-            </div>
-        </>
-    )
 }
 
 const PickupDate = (props) => {

@@ -4,6 +4,7 @@ import moment from "moment"
 import insurance from "../../../Images/insurance.png"
 import Location from "./Location"
 import PickupDate from "./PickupDate"
+import PickupBlockDate from "./PickupBlockDate"
 
 const RentForm = (props) => {
 
@@ -59,8 +60,12 @@ const RentForm = (props) => {
                     <p>With Drive lah, you can rent from a huge variety of nearby cars at great value. Fully insured<span>+</span>.</p>
                     <h4>See here how it works</h4>
                     <Location isPickup={isPickup} onChange={(value) => handlePlaceChange(value)} />
-                    <PickupDate value={pickup} onChange={(value) => { pickupChange(value) }} label="pickup" placeholder={moment().format("DD/MM/YYYY")} />
-                    <PickupDate value={returnby} onChange={(value) => handleReturnBy(value)} limitDay={limitReturnby} label="return by" placeholder={moment().add(1, "day").format("DD/MM/YYYY")} />
+                    {/* <PickupDate value={pickup} onChange={(value) => { pickupChange(value) }} label="pickup" placeholder={moment().format("DD/MM/YYYY")} /> */}
+                    {/* <PickupDate value={returnby} onChange={(value) => handleReturnBy(value)} limitDay={limitReturnby} label="return by" placeholder={moment().add(1, "day").format("DD/MM/YYYY")} /> */}
+                    <PickupBlockDate
+                        label={"choise day from to"}
+                        placeHolder={`${moment().format("DD/MM/YYYY")} - ${moment().add(1,"days").format("DD/MM/YYYY")}`}
+                    />
                     <div className="rent-button">
                         <input type="button" className="btn-join" value="join" />
                         <input type="button" value="search" className={`btn-search ${showBtnSearch && "btn-search-show"}`} />
