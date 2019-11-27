@@ -151,6 +151,14 @@
         padding: 5px;
     }
 
+    .select-month i:hover {
+        cursor: pointer;
+    }
+
+    .select-month div:hover {
+        cursor: pointer;
+    }
+
     .layout-choise-day {
         display: grid;
         grid-template-columns: auto auto auto auto auto auto auto;
@@ -163,6 +171,10 @@
         font-size: 14px;
         padding: 8px 0px;
         text-align: center;
+    }
+
+    .day-item:hover {
+        cursor: pointer;
     }
 
    .day-item span {
@@ -181,6 +193,46 @@
 
     .disable-day {
         color: gray;
+    }
+
+    .layout-choise-month {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        padding: 0px 10px;
+        position: relative;
+    }
+
+    .month-item {
+        text-align: center;
+        padding: 15px;
+    }
+
+    .month-item:hover {
+        cursor: pointer;
+    }
+
+    .month-item-selected {
+        border: 1px solid var(--secondaryColor);
+        border-radius: 5px;
+    }
+
+    .layout-choise-year {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+    }
+
+    .year-item {
+        padding: 12px;
+        text-align: center;
+    }
+
+    .year-item:hover {
+        cursor: pointer;
+    }
+
+    .year-item-selected {
+        border: 1px solid var(--secondaryColor);
+        border-radius: 5px;
     }
 
     /* ################################# */
@@ -230,6 +282,16 @@
 
     .where-item:hover {
         cursor: pointer;
+    }
+
+    .where .where-selected::before {
+        content: "";
+        width: 7px;
+        height: 100%;
+        background-color: white;
+        position: absolute;
+        left: 0;
+        top: 0;
     }
 
     /* ################################# */
