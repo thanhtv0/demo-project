@@ -239,6 +239,10 @@
         background-color: lightgray;
     }
 
+    .block:hover {
+        cursor: unset;
+    }
+
     .item-center-selected {
         background-color: lightgreen;
     }
