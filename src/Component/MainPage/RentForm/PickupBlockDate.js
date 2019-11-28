@@ -5,20 +5,25 @@ import FormChoiseYear from "./FormChoiseYear"
 
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
+const getDayInMonth = (month, year) => {
+    return (new Date(year, month, 0)).getDate();
+}
+
 const FormChoiseDay = (props) => {
 
-    const [defaultDay, setDefaultDay] = useState(moment());
+    const [defaultDay, setDefaultDay] = useState(null);
+    const [nextDefaultDay, setNextDefaultDay] = useState(null);
     const [dayOfWeek, setDayOfWeek] = useState(0);
+    const [nextDayOfWeek, setNextDayOfWeek] = useState(0);
     const [arrDay, setArrDay] = useState([]);
+    const [nextArrDay, setNextArrDay] = useState([]);
     const [count, setCount] = useState(0);
-
-    const getDayInMonth = (month, year) => {
-        return (new Date(year, month, 0)).getDate();
-    }
 
     useEffect(() => {
         if (props.show === true) {
             let defaultDay = moment(new Date(props.year, props.month, 1));
+            let nextDefaultDay = defaultDay.clone();
+            nextDefaultDay.add(1,"months");
             let { dayFrom, dayEnd } = props;
             if (dayFrom === null || dayEnd === null) {
                 dayFrom = null;
@@ -29,16 +34,25 @@ const FormChoiseDay = (props) => {
             }
             setCount(0);
             setDefaultDay(defaultDay);
-            updateInfoDay(defaultDay, dayFrom, dayEnd);
+            setNextDefaultDay(nextDefaultDay);
+            updateInfoDay(defaultDay, dayFrom, dayEnd, null, 1);
+            if(props.type === 2) {
+                updateInfoDay(nextDefaultDay, dayFrom, dayEnd, null, 2);
+            }
         }
     }, [props.show])
 
-    const updateInfoDay = (defaultDay, dayFrom, dayEnd, count) => {
+    const updateInfoDay = (defaultDay, dayFrom, dayEnd, count, whichArray) => {
         let month = defaultDay.get("month");
         let year = defaultDay.get("year");
 
         let dayOfWeek = (new Date(year, month, 1)).getDay();
-        setDayOfWeek(dayOfWeek);
+        if(whichArray === 1) {
+            setDayOfWeek(dayOfWeek);
+        }
+        else {
+            setNextDayOfWeek(dayOfWeek);
+        }
 
         //Create Array
         let dayInMonth = getDayInMonth(month + 1, year);
@@ -56,41 +70,34 @@ const FormChoiseDay = (props) => {
             }
         }
 
-        let dfDay = getObjectDay(defaultDay);
-        if (dayFrom) {
-            let dFrom = getObjectDay(dayFrom);
+        let startMonth = moment(new Date(year, month, 1)).valueOf();
+        let endMonth = moment(new Date(year, month, dayInMonth)).valueOf();
 
-            if (isInMonth(dFrom, dfDay)) {
-                arr[dFrom.date - 1 + dayOfWeek] = 2 //First pick day
+        if(dayFrom) {
+            let timeDayFrom = dayFrom.valueOf();
+            let oneDay =  60*60*24*1000; //time stamp one day
+
+            if(timeDayFrom <= endMonth && timeDayFrom >= startMonth) {
+                arr[dayFrom.get("date") - 1 + dayOfWeek] = 2;
             }
 
-            if (dayEnd) {
-                let dEnd = getObjectDay(dayEnd);
-                if (isInMonth(dEnd, dfDay)) {
-                    arr[dEnd.date - 1 + dayOfWeek] = 3//End pick day
-                }
-                if (isInMonth(dFrom, dEnd)) {
-                    if (isInMonth(dFrom, dfDay)) {
-                        if (dFrom.date === dEnd.date) {
-                            arr[dFrom.date - 1 + dayOfWeek] = 5; //Day from and day end is the same
-                        }
-                        else {
-                            for (let i = dFrom.date + 1; i < dEnd.date; i++) {
-                                arr[i - 1 + dayOfWeek] = 4 //Center pick day
-                            }
-                        }
-                    }
+            if(dayEnd) {
+                let timeDayEnd = dayEnd.valueOf();
+                if(timeDayFrom === timeDayEnd) {
+                    arr[dayFrom.get("date") - 1 + dayOfWeek] = 5;
                 }
                 else {
-                    if (isInMonth(dFrom, dfDay)) {
-                        for (let i = dFrom.date + 1; i <= dayInMonth; i++) {
-                            arr[i - 1 + dayOfWeek] = 4;
+                    let area = (timeDayEnd - timeDayFrom) / oneDay;
+                    let dayFromClone = dayFrom.clone().add(1, "days");
+                    for(let i=0;i<area-1;i++) {
+                        if(dayFromClone.valueOf() >= startMonth && dayFromClone.valueOf() <= endMonth)
+                        {
+                            arr[dayFromClone.get("date") - 1 + dayOfWeek] = 4;
                         }
+                        dayFromClone.add(1,"days");
                     }
-                    if (isInMonth(dEnd, dfDay)) {
-                        for (let i = 1; i < dEnd.date; i++) {
-                            arr[i - 1 + dayOfWeek] = 4;
-                        }
+                    if(timeDayEnd <= endMonth && timeDayEnd >= startMonth) {
+                        arr[dayEnd.get("date") - 1 + dayOfWeek] = 3;
                     }
                 }
             }
@@ -118,36 +125,34 @@ const FormChoiseDay = (props) => {
             }
         }
 
-        setArrDay(arr);
-    }
-
-    const getObjectDay = (day) => {
-        return {
-            year: day.get('year'),
-            month: day.get('month'),
-            date: day.get("date"),
+        if(whichArray === 1) {
+            setArrDay(arr);
+        } else {
+            setNextArrDay(arr);
         }
-    }
-
-    const isInMonth = (day1, day2) => {
-        if (day1.month === day2.month && day1.year === day2.year) {
-            return true;
-        }
-        return false;
     }
 
     const nextMonth = () => {
         let nextMonth = defaultDay.add(1, "months");
         setDefaultDay(nextMonth);
         changeMonthYear(nextMonth.get("month"), nextMonth.get("year"));
-        updateInfoDay(nextMonth, props.dayFrom, props.dayEnd, count);
+        updateInfoDay(nextMonth, props.dayFrom, props.dayEnd, count, 1);
+        if(props.type === 2) {
+            let nextNextMonth = nextMonth.clone().add(1,"months");
+            setNextDefaultDay(nextNextMonth);
+            updateInfoDay(nextNextMonth, props.dayFrom, props.dayEnd, count, 2);
+        }
     }
 
     const prevMonth = () => {
-        let prevMonth = defaultDay.subtract(1, "months")
+        let prevMonth = defaultDay.clone().subtract(1, "months")
+        if(props.type === 2) {
+            setNextDefaultDay(defaultDay);
+            updateInfoDay(defaultDay, props.dayFrom, props.dayEnd, count, 2);
+        }
         setDefaultDay(prevMonth);
+        updateInfoDay(prevMonth, props.dayFrom, props.dayEnd, count, 1);
         changeMonthYear(prevMonth.get("month"), prevMonth.get("year"));
-        updateInfoDay(prevMonth, props.dayFrom, props.dayEnd, count);
     }
 
     const changeMonthYear = (month, year) => {
@@ -157,47 +162,51 @@ const FormChoiseDay = (props) => {
             props.onChangeYear(year);
     }
 
-    const handleDayClick = (value) => {
+    const handleDayClick = (day) => {
         if (count === 0) {
-            let dayFrom = moment(new Date(props.year, props.month, value));
-            props.onDayFromChange(dayFrom);
+            props.onDayFromChange(day);
             props.onDayEndChange(null);
-            updateInfoDay(defaultDay, dayFrom, null, count + 1);
             setCount(count + 1);
+            updateInfoDay(defaultDay, day, null,1, 1);
+            if(props.type === 2) {
+                updateInfoDay(nextDefaultDay, day, null,1, 2);
+            }
         }
         if (count === 1) {
-            let dayEnd = moment(new Date(props.year, props.month, value));
-
-            props.onDayEndChange(dayEnd);
-            updateInfoDay(defaultDay, props.dayFrom, dayEnd);
-            props.setError(false);
-
+            props.onDayEndChange(day);
+            updateInfoDay(defaultDay, props.dayFrom, day,1);
             setCount(0);
             props.setShow(false);
         }
     }
 
-    const handleMouseMove = (value) => {
+    const handleMouseMove = (day) => {
         if (count === 1) {
-            let dayEnd = moment(new Date(defaultDay.get("year"), defaultDay.get("month"), value));
-            updateInfoDay(defaultDay, props.dayFrom, dayEnd, count);
+            updateInfoDay(defaultDay, props.dayFrom, day, count,1);
+            if(props.type === 2) {
+                updateInfoDay(nextDefaultDay, props.dayFrom, day, count,2);
+            }
         }
     }
 
     const handleMouseLeave = () => {
         if (count === 1) {
-            updateInfoDay(defaultDay, props.dayFrom, null, count)
+            updateInfoDay(defaultDay, props.dayFrom, null, count,1);
+            if(props.type === 2) {
+                updateInfoDay(nextDefaultDay, props.dayFrom, null, count,2);
+            }
         }
     }
 
     return (
-        <>
-            <div className={`calendar ${props.show && "show"}`} tabIndex={0}>
+        <div style={{width: `${props.type === 1 && "100%"}`}} className={`layout-two-calendar ${props.show && "show"}`}>
+            <div className="calendar" tabIndex={0}>
                 <div className="select-month">
                     <i onClick={prevMonth} className="fas fa-chevron-left"></i>
                     <div onClick={() => props.upperLayout()}>{months[props.month]} {props.year}</div>
-                    <i onClick={nextMonth} className="fas fa-chevron-right"></i>
+                    {props.type === 1 && <i onClick={nextMonth} className="fas fa-chevron-right"></i>}
                 </div>
+
                 <div className="layout-choise-day">
                     <div className="day-item"><span>Su</span></div>
                     <div className="day-item"><span>Mo</span></div>
@@ -211,13 +220,40 @@ const FormChoiseDay = (props) => {
                         value={index - dayOfWeek + 1}
                         state={value}
                         key={index}
-                        onClick={(value) => handleDayClick(value)}
-                        onMouseEnter={(value) => handleMouseMove(value)}
+                        onClick={(value) => handleDayClick(defaultDay.clone().set("date", value))}
+                        onMouseEnter={(value) => handleMouseMove(defaultDay.clone().set("date", value))}
                         onMouseLeave={handleMouseLeave}
                     />)}
                 </div>
             </div>
-        </>
+            { props.type === 2 && <div className="calendar" tabIndex={0}>
+                <div className="select-month">
+                    {props.type === 1 && <i onClick={prevMonth} className="fas fa-chevron-left"></i>}
+                    <div onClick={props.type === 1 ? () => props.upperLayout() : null}>{nextDefaultDay && months[nextDefaultDay.get("month")]} {nextDefaultDay && nextDefaultDay.get("year")}</div>
+                    <i onClick={nextMonth} className="fas fa-chevron-right"></i>
+                </div>
+
+                <div className="layout-choise-day">
+                    <div className="day-item"><span>Su</span></div>
+                    <div className="day-item"><span>Mo</span></div>
+                    <div className="day-item"><span>Tu</span></div>
+                    <div className="day-item"><span>We</span></div>
+                    <div className="day-item"><span>Th</span></div>
+                    <div className="day-item"><span>Fr</span></div>
+                    <div className="day-item"><span>Sa</span></div>
+
+                    {nextArrDay.map((value, index) => <DayItem
+                        value={index - nextDayOfWeek + 1}
+                        state={value}
+                        key={index}
+                        onClick={(value) => handleDayClick(nextDefaultDay.clone().set("date", value))}
+                        onMouseEnter={(value) => handleMouseMove(nextDefaultDay.clone().set("date", value))}
+                        onMouseLeave={handleMouseLeave}
+                    />)}
+                </div>
+            </div>}
+        </div>
+
     )
 }
 
@@ -256,6 +292,7 @@ const PickupBlockDate = (props) => {
     const [dayEnd, setDayEnd] = useState(null);
     const blocks = [{ from: 7, to: 10 }, { from: 20, to: 25 }];
     const [isError, setError] = useState(false);
+    const type = 2; // 1 - one calendar, 2 - two calendar;
 
     useEffect(() => {
         if (show) {
@@ -322,6 +359,7 @@ const PickupBlockDate = (props) => {
                     onDayFromChange={(value) => setDayFrom(value)}
                     onDayEndChange={(value) => setDayEnd(value)}
                     setError={(value) => setError(value)}
+                    type={type}
                 />}
 
                 {layout === 1 && <FormChoiseMonth
@@ -331,12 +369,14 @@ const PickupBlockDate = (props) => {
                     month={month}
                     year={year}
                     upperLayout={upperLayout}
+                    type={type}
                 />}
 
                 {layout === 0 && <FormChoiseYear
                     show={show}
                     year={year}
                     onChange={(year) => handleYearChange(year)}
+                    type={type}
                 />}
 
             </div>

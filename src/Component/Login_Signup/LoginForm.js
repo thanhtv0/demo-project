@@ -23,7 +23,7 @@ const LoginForm = (props) => {
     }
 
     const checkDataFull = (data) => {
-        for (const [key, value] of Object.entries(data)) {
+        for (const value of Object.values(data)) {
             if (value === "")
                 return false;
         }

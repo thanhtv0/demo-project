@@ -17,8 +17,8 @@ const FormChoiseYear = (props) => {
     }, [props.show])
 
     return (
-        <>
-            <div className={`calendar ${props.show && "show"}`} tabIndex={0}>
+        <div style={{width: "100%" }} className={`layout-two-calendar ${props.show && "show"}`}>
+            <div className="calendar" tabIndex={0}>
                 <div className="select-month">
                     <i onClick={null} className="fas fa-chevron-left"></i>
                     <div>Please select a year</div>
@@ -30,7 +30,7 @@ const FormChoiseYear = (props) => {
                     })}
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

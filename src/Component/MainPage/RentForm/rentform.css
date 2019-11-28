@@ -124,31 +124,31 @@
         background-color: var(--mainColor);
         margin-top: 5px;
         color: white;
-        position: absolute;
         font-size: 18px;
         font-weight: bold;
         box-sizing: border-box;
-        display: none;
-        z-index: 1;
         outline: none;
     }
 
     .select-month {
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
         align-items: center;
-        padding: 10px;
+        width: 100%;
+        margin: 10px 0px;
         background-color: var(--mainColor);
     }
 
     .select-month div {
-        margin: 0px 35px;
-        width: 100%;
+        margin: 0px 40px;
         text-align: center;
+        width: 100%;
+        font-size: 16px;
     }
 
     .select-month i {
         padding: 5px;
+        margin: 0px 10px;
     }
 
     .select-month i:hover {
@@ -162,8 +162,8 @@
     .layout-choise-day {
         display: grid;
         grid-template-columns: auto auto auto auto auto auto auto;
-        padding: 0px 10px;
         position: relative;
+        width: 100%;
         background-color: var(--mainColor);
     }
 
@@ -218,7 +218,7 @@
 
     .layout-choise-year {
         display: grid;
-        grid-template-columns: auto auto auto auto auto;
+        grid-template-columns: auto auto auto auto;
     }
 
     .year-item {
@@ -255,6 +255,13 @@
     .item-end-selected {
         background-color: lightgreen;
         border-radius: 0 50% 50% 0;
+    }
+
+    .layout-two-calendar {
+        display: none;
+        position: absolute;
+        flex-direction: column;
+        width: 100%;
     }
 
     /* ################################# */
@@ -319,7 +326,7 @@
     /* ################################# */
 
     .show {
-        display: block;
+        display: flex;
     }
 }
 
@@ -369,6 +376,16 @@
         background-color: var(--mainColor);
         color: white;
         border-radius: 50%;
+    }
+
+    .rent-form {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .layout-two-calendar {
+        flex-direction: row;
+        width: 200%;
     }
 
 }
